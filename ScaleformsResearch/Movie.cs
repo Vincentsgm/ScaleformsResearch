@@ -9,6 +9,8 @@ namespace ScaleformsResearch
         public Color Color { get; set; } = Color.White;
         public bool IsLoaded { get { return !IsReleased && Handle != 0 && Natives.x85F01B8D5B90570E<bool>(Handle); } }
 
+        public bool FitsRenderTarget { set => Natives.xE6A9F00D4240B519(Handle, value); }
+
         public bool IsReleased { get; private set; }
 
         public abstract string MovieName { get; }
@@ -35,6 +37,12 @@ namespace ScaleformsResearch
             IsReleased = true;
         }
 
+        public void Refresh()
+        {
+            if (IsLoaded) Release();
+            LoadAndWait();
+        }
+
         public void Draw()
         {
             if (!IsLoaded) return;
@@ -55,6 +63,14 @@ namespace ScaleformsResearch
                     Natives.x1ce592fdc749d6f5(Handle, position.X, position.Y, position.Z, rotation.Pitch, rotation.Roll, rotation.Yaw, 2, 2, 1, scale.X, scale.Y, scale.Z, 2);
                 else
                     Natives.x87D51D72255D4E78(Handle, position.X, position.Y, position.Z, rotation.Pitch, rotation.Roll, rotation.Yaw, 2, 2, 1, scale.X, scale.Y, scale.Z, 2);
+            }
+        }
+
+        public void DrawMasked(Movie scaleform2, Color color)
+        {
+            if (IsLoaded && (scaleform2?.IsLoaded ?? false))
+            {
+                Natives.xCF537FDE4FBD4CE5(scaleform2.Handle, color.R, color.G, color.B, color.A);
             }
         }
 

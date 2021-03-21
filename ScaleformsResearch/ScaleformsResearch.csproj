@@ -33,7 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="RagePluginHookSDK">
-      <HintPath>..\..\..\Mods\_Libraries\RagePluginHookSDK.dll</HintPath>
+      <HintPath>D:\Rockstar Games\Grand Theft Auto V\SDK\RagePluginHookSDK.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
