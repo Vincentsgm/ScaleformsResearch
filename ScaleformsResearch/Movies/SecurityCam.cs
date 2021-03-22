@@ -59,7 +59,12 @@ namespace ScaleformsResearch.Movies
                 t_currentDetail = MathHelper.Clamp(t_currentDetail - 1, 0, t_details.Count() - 1);
                 Details = t_details[t_currentDetail];
             }
+            else if (Game.IsKeyDown(Keys.NumPad0))
+            {
+                if (Layout == SecurityCamLayout.CameraLike) Layout = SecurityCamLayout.Default;
+                else Layout = SecurityCamLayout.CameraLike;
+            }
         }
-        protected override string TestHelpMessage => $"~y~{Keys.NumPad4}~s~ - Next Location~n~~y~{Keys.NumPad1}~s~ - Previous Location~n~~y~{Keys.NumPad5}~s~ - Next Details~n~~y~{Keys.NumPad2}~s~ - Previous Details";
+        protected override string TestHelpMessage => $"~y~{Keys.NumPad4}~s~ - Next Location~n~~y~{Keys.NumPad1}~s~ - Previous Location~n~~y~{Keys.NumPad5}~s~ - Next Details~n~~y~{Keys.NumPad2}~s~ - Previous Details~n~~y~{Keys.NumPad0}~s~ - Toggle Layout ({Layout})";
     }
 }

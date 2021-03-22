@@ -7,18 +7,22 @@ using System.Windows.Forms;
 using Rage;
 using static Rage.Native.NativeFunction;
 
-[assembly: Rage.Attributes.Plugin("ScaleformsResearch", Author = "BadMusician & Vincentsgm", EntryPoint = "ScaleformsResearch.EntryPoint.Main", PrefersSingleInstance = true)]
+[assembly: Rage.Attributes.Plugin("ScaleformsResearch", Author = "BadMusician & Vincentsgm", EntryPoint = "ScaleformsResearch.EntryPoint.OnLoad", ExitPoint = "ScaleformsResearch.EntryPoint.OnUnload", PrefersSingleInstance = true)]
 
 namespace ScaleformsResearch
 {
     internal static class EntryPoint
-    { 
-        public static void Main()
+    {
+        public static void OnLoad()
         {
             while (true)
             {
                 GameFiber.Yield();
             }
+        }
+        public static void OnUnload(bool isTerminating)
+        {
+            Test.Stop();
         }
 
         [Rage.Attributes.ConsoleCommand("Runs the rank bar scaleform example", Name = "Scaleform_MP_RANK_BAR")]

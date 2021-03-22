@@ -60,10 +60,11 @@ namespace ScaleformsResearch.Movies
                 //Doesn't work, tires don't seem to take damage
                 foreach (var wheel in t_wheels)
                 {
-                    Natives.x2970EAA18FD5E42F(MainPlayer.CurrentVehicle, true);
-                    SetTyreWearMultiplier(MainPlayer.CurrentVehicle, wheel, 1f);
-                    SetWheelDamage(wheel, GetVehicleWheelDamage(MainPlayer.CurrentVehicle, wheel));
-                }
+                    // Natives.x2970EAA18FD5E42F(MainPlayer.CurrentVehicle, true);
+                    // healthIndicator.SetTyreWearMultiplier(MainPlayer.CurrentVehicle, wheel, 1000f);
+                    //  healthIndicator.SetWheelDamage(wheel, healthIndicator.GetVehicleWheelDamage(MainPlayer.CurrentVehicle, wheel));
+                }//
+                //healthIndicator.Draw2D(0.12f, 0.12f, 0.2f, 0.2f);
             }
         }
     }

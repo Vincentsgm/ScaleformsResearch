@@ -9,7 +9,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ScaleformsResearch.Movies
+namespace ScaleformsResearch
 {
     internal static class Test
     {
