@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Rage;
 using static Rage.Native.NativeFunction;
-using static ScaleformsResearch.Movies.Util;
+using static ScaleformsResearch.Util;
 
 namespace ScaleformsResearch.Movies
 {
