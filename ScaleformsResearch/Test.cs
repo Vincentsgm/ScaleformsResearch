@@ -36,6 +36,7 @@ namespace ScaleformsResearch.Movies
         }
         internal static void Stop(Movie x)
         {
+            if (!tests.ContainsKey(x)) return;
             if (tests[x] != null && tests[x].IsAlive)
             {
                 tests[x].Abort();

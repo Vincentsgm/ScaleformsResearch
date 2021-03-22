@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Rage;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ScaleformsResearch.Movies
 {
@@ -15,5 +17,35 @@ namespace ScaleformsResearch.Movies
         public float Speed { get => speed; set { speed = value.Clamp(0, 1); CallFunction("SET_SPEED", speed); } }
         public float Depth { get => depth; set { depth = value.Clamp(0, 1); CallFunction("SET_DEPTH", depth); } }
         public float Temperature { get => temp; set { temp = value.Clamp(0, 1); CallFunction("SET_TEMPERATURE", temp); } }
+
+        protected override void OnTestTick()
+        {
+            base.OnTestTick();
+            if (Game.IsKeyDown(Keys.NumPad4))
+            {
+                Speed += 0.1f;
+            }
+            else if (Game.IsKeyDown(Keys.NumPad1))
+            {
+                Speed -= 0.1f;
+            }
+            else if (Game.IsKeyDown(Keys.NumPad5))
+            {
+                Depth += 0.1f;
+            }
+            else if (Game.IsKeyDown(Keys.NumPad2))
+            {
+                Depth -= 0.1f;
+            }
+            else if (Game.IsKeyDown(Keys.NumPad6))
+            {
+                Temperature += 0.1f;
+            }
+            else if (Game.IsKeyDown(Keys.NumPad3))
+            {
+                Temperature -= 0.1f;
+            }
+        }
+        protected override string TestHelpMessage => $"~y~Num1/3~s~ - Speed ({Speed})~n~~y~Num2/4~s~ - Depth ({Depth})~n~~y~Num3/6~s~ - Temperature ({Temperature})~n~";
     }
 }
