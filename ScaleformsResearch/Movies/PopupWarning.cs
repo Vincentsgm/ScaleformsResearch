@@ -35,7 +35,7 @@ namespace ScaleformsResearch.Movies
             get => listHighlights;
             set
             {
-                listHighlights = value.Clamp(0, ListCount); 
+                listHighlights = value.Clamp(0, ListCount);
                 SetListHighlights(listHighlights);
             }
         }
@@ -51,7 +51,7 @@ namespace ScaleformsResearch.Movies
         {
             RemoveListItems();
             ListCount = 0;
-            ListHighlights = 0;            
+            ListHighlights = 0;
             for (int i = 0; i < 5; i++)
             {
                 SetListRow(i, $"row {i}", 333 * i, 50 * i, 3 * i, (HudColor)(10 * i).Clamp(0, 255));
@@ -70,11 +70,11 @@ namespace ScaleformsResearch.Movies
             else if (Game.IsKeyDown(Keys.NumPad6)) alertType--;
             else if (Game.IsKeyDown(Keys.NumPad3)) showBg = !showBg;
             alertType = alertType.Clamp(0, Enum.GetValues(typeof(AlertType)).Length - 1);
-
-            Game.DisplayHelp($"~y~Numpad9/Numpad6 ~s~Change alert type: ~b~{(AlertType)alertType}\n" +
-                $"~y~+/- ~s~Change highlight: ~b~{listHighlights}\n" +
-                $"~y~Numpad3 ~s~Show background: ~b~{showBg}", 1000);
         }
+
+        protected override string TestHelpMessage => $"~y~Numpad9/Numpad6 ~s~Change alert type: ~b~{(AlertType)alertType}~n~" +
+                $"~y~+/- ~s~Change highlight: ~b~{listHighlights}~n~" +
+                $"~y~Numpad3 ~s~Show background: ~b~{showBg}";
 
         protected override void OnTestEnd()
         {
