@@ -55,6 +55,7 @@
     <Compile Include="HudColor.cs" />
     <Compile Include="HudMovie.cs" />
     <Compile Include="Movie.cs" />
+    <Compile Include="Movies\BreakingNews.cs" />
     <Compile Include="Movies\Drilling.cs" />
     <Compile Include="Movies\MorgueLaptop.cs" />
     <Compile Include="Movies\OpenWheelHealthIndicator.cs" />
