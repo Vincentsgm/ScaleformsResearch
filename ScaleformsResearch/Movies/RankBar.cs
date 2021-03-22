@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RAGENativeUI;
 
 namespace ScaleformsResearch.Movies
 {
@@ -25,7 +24,7 @@ namespace ScaleformsResearch.Movies
 
         private HudColor color = HudColor.Freemode;
 
-        public HudColor RankColor { get => color; set { color = value; CallHudFunction("SET_COLOUR", (int)color); } }        
+        public HudColor RankColor { get => color; set { color = value; CallHudFunction("SET_COLOUR", (int)color); } }
 
         public void StayOnScreen() => CallHudFunction("STAY_ON_SCREEN");
 
