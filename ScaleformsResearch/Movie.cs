@@ -46,12 +46,14 @@ namespace ScaleformsResearch
         public void Draw()
         {
             if (!IsLoaded) return;
+            BeforeDraw();
             Natives.x0DF606929C105BE1(Handle, Color.R, Color.G, Color.B, Color.A);
         }
 
         public void Draw2D(float x, float y, float w, float h)
         {
             if (!IsLoaded) return;
+            BeforeDraw();
             Natives.x54972ADAF0294A93(Handle, x, y, w, h, Color.R, Color.G, Color.B, Color.A);
         }
 
@@ -59,6 +61,7 @@ namespace ScaleformsResearch
         {
             if (IsLoaded)
             {
+                BeforeDraw();
                 if (solid)
                     Natives.x1ce592fdc749d6f5(Handle, position.X, position.Y, position.Z, rotation.Pitch, rotation.Roll, rotation.Yaw, 2, 2, 1, scale.X, scale.Y, scale.Z, 2);
                 else
@@ -70,8 +73,15 @@ namespace ScaleformsResearch
         {
             if (IsLoaded && (scaleform2?.IsLoaded ?? false))
             {
+                BeforeDraw();
+                scaleform2.BeforeDraw();
                 Natives.xCF537FDE4FBD4CE5(scaleform2.Handle, color.R, color.G, color.B, color.A);
             }
+        }
+
+        protected virtual void BeforeDraw()
+        {
+
         }
 
         public void CallFunction(string name, params object[] args)
@@ -105,7 +115,7 @@ namespace ScaleformsResearch
             return Natives.xE1E258829A885245<string>(ret);
         }
 
-        private void pushArgs(object[] args)
+        protected void pushArgs(object[] args)
         {
             foreach (object x in args)
             {
