@@ -13,8 +13,6 @@ namespace ScaleformsResearch
 {
     internal static class EntryPoint
     {
-        public static Ped MainPlayer => Game.LocalPlayer.Character;
-
         public static void Main()
         {
             while (true)
@@ -99,7 +97,7 @@ namespace ScaleformsResearch
                 Movies.OpenWheelHealthIndicator healthIndicator = new Movies.OpenWheelHealthIndicator();
                 healthIndicator.LoadAndWait();
 
-                var wheels = (IEnumerable<Movies.OpenWheelHealthIndicator.Wheel>)Enum.GetValues(typeof(Movies.OpenWheelHealthIndicator.Wheel));
+                
 
                 bool aborted = false;
 
@@ -107,17 +105,7 @@ namespace ScaleformsResearch
                 {
                     GameFiber.Yield();
                     if (Game.IsKeyDown(Keys.Back)) aborted = true;
-                    if (Game.LocalPlayer.Character.IsInAnyVehicle(false))
-                    {
-                        //Doesn't work, tires don't seem to take damage
-                        foreach (var wheel in wheels)
-                        {
-                            Natives.x2970EAA18FD5E42F(MainPlayer.CurrentVehicle, true);
-                            healthIndicator.SetTyreWearMultiplier(MainPlayer.CurrentVehicle, wheel, 1000f);
-                            healthIndicator.SetWheelDamage(wheel, healthIndicator.GetVehicleWheelDamage(MainPlayer.CurrentVehicle, wheel));
-                        }
-                        healthIndicator.Draw2D(0.12f, 0.12f, 0.2f, 0.2f);
-                    }
+                    
                 }
 
                 healthIndicator.Release();
