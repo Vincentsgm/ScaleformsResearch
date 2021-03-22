@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using Rage;
 
 namespace ScaleformsResearch.Movies
 {
@@ -57,6 +59,44 @@ namespace ScaleformsResearch.Movies
             Unk2 = 1,
             Unk3 = 2,
             Unk4 = 3
+        }
+
+        protected override void OnTestStart()
+        {
+            Refresh();
+            SetSwitchSlot(0, stateEnum.Available, charEnum.Unk1, true, "char_abigail");
+            SetSwitchSlot(1, stateEnum.Available, charEnum.Unk2, false, "char_amanda");
+            SetSwitchSlot(2, stateEnum.Available, charEnum.Unk3, false, "char_andreas");
+            SetSwitchSlot(3, stateEnum.Available, charEnum.Unk4, false, "char_barry");
+
+            SetPlayerDamage(0, true, true);
+
+            MPLabel = "FR_HELP";
+
+            Visible = true;
+
+            MPHead = "char_barry";
+
+            Game.FrameRender += (s, e) => Draw2D(0.88f, 0.88f, 0.2f, 0.2f);
+        }
+
+        protected override void OnTestTick()
+        {
+            Game.DisplaySubtitle($"Selected character: {PlayerSelected}");
+            if (Game.IsKeyDown(Keys.NumPad8)) PlayerSelected = 2;
+            else if (Game.IsKeyDown(Keys.NumPad4)) PlayerSelected = 0;
+            else if (Game.IsKeyDown(Keys.NumPad6)) PlayerSelected = 1;
+            else if (Game.IsKeyDown(Keys.NumPad2)) PlayerSelected = 3;
+        }
+
+        protected override void OnTestEnd()
+        {
+            Game.FrameRender -= (s, e) => Draw2D(0.88f, 0.88f, 0.2f, 0.2f);
+        }
+
+        protected override void TestDraw()
+        {
+            //Not drawing on tick otherwise it flickers
         }
     }
 }
