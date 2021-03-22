@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ScaleformsResearch.Movies
+namespace ScaleformsResearch
 {
     internal static class Util
     {

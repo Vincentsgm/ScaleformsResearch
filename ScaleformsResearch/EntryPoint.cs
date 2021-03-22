@@ -7,18 +7,22 @@ using System.Windows.Forms;
 using Rage;
 using static Rage.Native.NativeFunction;
 
-[assembly: Rage.Attributes.Plugin("ScaleformsResearch", Author = "BadMusician & Vincentsgm", EntryPoint = "ScaleformsResearch.EntryPoint.Main", PrefersSingleInstance = true)]
+[assembly: Rage.Attributes.Plugin("ScaleformsResearch", Author = "BadMusician & Vincentsgm", EntryPoint = "ScaleformsResearch.EntryPoint.OnLoad", ExitPoint = "ScaleformsResearch.EntryPoint.OnUnload", PrefersSingleInstance = true)]
 
 namespace ScaleformsResearch
 {
     internal static class EntryPoint
     {
-        public static void Main()
+        public static void OnLoad()
         {
             while (true)
             {
                 GameFiber.Yield();
             }
+        }
+        public static void OnUnload(bool isTerminating)
+        {
+            Test.Stop();
         }
 
         [Rage.Attributes.ConsoleCommand("Runs the security cam scaleform example", Name = "Scaleform_SECURITY_CAM")]
@@ -97,7 +101,7 @@ namespace ScaleformsResearch
                 Movies.OpenWheelHealthIndicator healthIndicator = new Movies.OpenWheelHealthIndicator();
                 healthIndicator.LoadAndWait();
 
-                
+
 
                 bool aborted = false;
 
@@ -105,7 +109,7 @@ namespace ScaleformsResearch
                 {
                     GameFiber.Yield();
                     if (Game.IsKeyDown(Keys.Back)) aborted = true;
-                    
+
                 }
 
                 healthIndicator.Release();
@@ -214,7 +218,7 @@ namespace ScaleformsResearch
                 while (!aborted)
                 {
                     GameFiber.Yield();
-                  
+
                     Game.DisplaySubtitle($"Selected character: {playerSwitch.GetSwitchSelected()}");
                     if (Game.IsKeyDown(Keys.Back)) aborted = true;
                     else if (Game.IsKeyDownRightNow(Keys.NumPad8)) playerSwitch.PlayerSelected = 2;
@@ -225,7 +229,7 @@ namespace ScaleformsResearch
                     else if (Game.IsKeyDown(Keys.NumPad4)) playerSwitch.PlayerSelected = 0;
                     else if (Game.IsKeyDown(Keys.NumPad6)) playerSwitch.PlayerSelected = 1;
                     else if (Game.IsKeyDown(Keys.NumPad2)) playerSwitch.PlayerSelected = 3;
-                    
+
                 }
                 Game.FrameRender -= (s, e) => playerSwitch.Draw2D(0.88f, 0.88f, 0.2f, 0.2f);
                 playerSwitch.Release();
