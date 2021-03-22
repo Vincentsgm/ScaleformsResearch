@@ -53,12 +53,14 @@
     <Compile Include="EntryPoint.cs" />
     <Compile Include="HudMovie.cs" />
     <Compile Include="Movie.cs" />
+    <Compile Include="Movies\MorgueLaptop.cs" />
     <Compile Include="Movies\OpenWheelHealthIndicator.cs" />
     <Compile Include="Movies\RankBar.cs" />
     <Compile Include="Movies\SecurityCam.cs" />
     <Compile Include="Movies\SecurityCamera.cs" />
     <Compile Include="Movies\Stage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sound.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

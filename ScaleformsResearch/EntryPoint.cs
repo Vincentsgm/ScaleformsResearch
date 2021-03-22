@@ -123,5 +123,52 @@ namespace ScaleformsResearch
                 healthIndicator.Release();
             });
         }
+
+        [Rage.Attributes.ConsoleCommand("Runs the morgue laptop scaleform example", Name = "Scaleform_MORGUE_LAPTOP")]
+        public static void RunMorgueLaptopExample()
+        {
+            GameFiber.StartNew(delegate
+            {
+                Movies.MorgueLaptop morgueLaptop = new Movies.MorgueLaptop();
+                morgueLaptop.LoadAndWait();
+
+                morgueLaptop.Percent = 0;
+
+                uint lastUpdate = Game.GameTime;
+
+                var sound = new Sound();
+                sound.PlayFrontend("laptop_download_loop", "dlc_xm_heists_iaa_morgue_sounds");
+
+                while (morgueLaptop.Percent < 100)
+                {
+                    GameFiber.Yield();
+
+                    if (Game.GameTime > lastUpdate + 100)
+                    {
+                        morgueLaptop.Percent += 1;
+                        lastUpdate = Game.GameTime;
+
+                        if (sound.HasFinished) sound.PlayFrontend("laptop_download_loop", "dlc_xm_heists_iaa_morgue_sounds");
+                    }
+
+                    morgueLaptop.Draw();
+                }
+
+                sound.Stop();
+                sound.ReleaseId();
+
+                new Sound(-1).PlayFrontend("HACKING_SUCCESS", null);
+
+                lastUpdate = Game.GameTime;
+
+                while (Game.GameTime < lastUpdate + 2000)
+                {
+                    GameFiber.Yield();
+                    morgueLaptop.Draw();
+                }
+
+                morgueLaptop.Release();
+            });
+        }
     }
 }
