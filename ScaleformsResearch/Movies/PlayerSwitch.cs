@@ -77,7 +77,12 @@ namespace ScaleformsResearch.Movies
 
             MPHead = "char_barry";
 
-            Game.FrameRender += (s, e) => Draw2D(0.88f, 0.88f, 0.2f, 0.2f);
+            Game.FrameRender += Game_FrameRender; ;
+        }
+
+        private void Game_FrameRender(object sender, GraphicsEventArgs e)
+        {
+            Draw2D(0.88f, 0.88f, 0.2f, 0.2f);
         }
 
         protected override void OnTestTick()
@@ -89,9 +94,11 @@ namespace ScaleformsResearch.Movies
             else if (Game.IsKeyDown(Keys.NumPad2)) PlayerSelected = 3;
         }
 
+        protected override string TestHelpMessage => $"~y~NumPad2/4/6/8~s~ - Select Character";
+
         protected override void OnTestEnd()
         {
-            Game.FrameRender -= (s, e) => Draw2D(0.88f, 0.88f, 0.2f, 0.2f);
+            Game.FrameRender -= Game_FrameRender;
         }
 
         protected override void TestDraw()

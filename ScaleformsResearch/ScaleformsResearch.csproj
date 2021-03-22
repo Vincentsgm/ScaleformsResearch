@@ -60,6 +60,7 @@
     <Compile Include="Movies\CameraGallery.cs" />
     <Compile Include="Movies\CameraShutter.cs" />
     <Compile Include="Movies\ClubhouseName.cs" />
+    <Compile Include="Movies\Digiscanner.cs" />
     <Compile Include="Movies\Drilling.cs" />
     <Compile Include="Movies\MorgueLaptop.cs" />
     <Compile Include="Movies\OpenWheelHealthIndicator.cs" />
