@@ -96,11 +96,16 @@ namespace ScaleformsResearch
             {
                 Rage.Game.DisplayHelp(TestHelpMessage);
             }
+            TestDraw();
             OnTestTick();
         }
         internal void TestEnd()
         {
             OnTestEnd();
+        }
+        protected virtual void TestDraw()
+        {
+            Draw();
         }
         protected virtual void OnTestStart()
         {

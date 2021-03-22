@@ -46,6 +46,6 @@ namespace ScaleformsResearch.Movies
                 Temperature -= 0.1f;
             }
         }
-        protected override string TestHelpMessage => $"~y~Num1/3~s~ - Speed ({Speed})~n~~y~Num2/4~s~ - Depth ({Depth})~n~~y~Num3/6~s~ - Temperature ({Temperature})~n~";
+        protected override string TestHelpMessage => $"~y~Num1/4~s~ - Speed ({Speed:0.0})~n~~y~Num2/5~s~ - Depth ({Depth:0.0})~n~~y~Num3/6~s~ - Temperature ({Temperature:0.0})~n~";
     }
 }

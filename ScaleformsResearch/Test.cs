@@ -24,7 +24,6 @@ namespace ScaleformsResearch.Movies
                 while (true)
                 {
                     GameFiber.Yield();
-                    x.Draw();
                     x.TestTick();
                     if (Game.IsKeyDown(System.Windows.Forms.Keys.End)) break;
                 }
