@@ -52,6 +52,7 @@
     <Compile Include="HudColor.cs" />
     <Compile Include="HudMovie.cs" />
     <Compile Include="Movie.cs" />
+    <Compile Include="Movies\Drilling.cs" />
     <Compile Include="Movies\MorgueLaptop.cs" />
     <Compile Include="Movies\OpenWheelHealthIndicator.cs" />
     <Compile Include="Movies\PlayerSwitch.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="Movies\SecurityCam.cs" />
     <Compile Include="Movies\SecurityCamera.cs" />
     <Compile Include="Movies\Stage.cs" />
+    <Compile Include="Movies\Util.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sound.cs" />
   </ItemGroup>
