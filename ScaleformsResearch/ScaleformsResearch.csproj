@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GameplayCamera.cs" />
     <Compile Include="Movies\Binoculars.cs" />
     <Compile Include="Movies\BlimpText.cs" />
     <Compile Include="Movies\BountyBoard.cs" />
