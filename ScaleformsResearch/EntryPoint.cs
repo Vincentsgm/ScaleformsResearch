@@ -170,5 +170,78 @@ namespace ScaleformsResearch
                 morgueLaptop.Release();
             });
         }
+
+        [Rage.Attributes.ConsoleCommand("Runs the bounty board scaleform example", Name = "Scaleform_BOUNTY_BOARD")]
+        public static void RunBountyBoardExample()
+        {
+            GameFiber.StartNew(delegate
+            {
+                Movies.BountyBoard bountyBoard = new Movies.BountyBoard();
+                bountyBoard.Refresh();
+                Game.DisplayNotification(bountyBoard.Handle.ToString());
+
+                bountyBoard.SetBounty("Vincentsgm", 666, "heisthud", "hc_michael");
+                bountyBoard.SetBounty("BadMusician", 999, "heisthud", "hc_n_gus");
+                bountyBoard.SetBounty("LMS", 999, "heisthud", "hc_n_hug");
+
+                bool aborted = false;
+
+                while (!aborted)
+                {
+                    GameFiber.Yield();
+                    if (Game.IsKeyDown(Keys.Back)) aborted = true;
+                    //Doesn't work
+                    bountyBoard.Draw();
+                }
+
+                bountyBoard.Release();
+            });
+        }
+
+        [Rage.Attributes.ConsoleCommand("Runs the player switch scaleform example", Name = "Scaleform_PLAYER_SWITCH")]
+        public static void RunPlayerSwitchExample()
+        {
+            GameFiber.StartNew(delegate
+            {
+                Movies.PlayerSwitch playerSwitch = new Movies.PlayerSwitch();
+                playerSwitch.Refresh();
+
+                playerSwitch.SetSwitchSlot(0, Movies.PlayerSwitch.stateEnum.Available, Movies.PlayerSwitch.charEnum.Unk1, true, "char_abigail");
+                playerSwitch.SetSwitchSlot(1, Movies.PlayerSwitch.stateEnum.Available, Movies.PlayerSwitch.charEnum.Unk2, false, "char_amanda");
+                playerSwitch.SetSwitchSlot(2, Movies.PlayerSwitch.stateEnum.Available, Movies.PlayerSwitch.charEnum.Unk3, false, "char_andreas");
+                playerSwitch.SetSwitchSlot(3, Movies.PlayerSwitch.stateEnum.Available, Movies.PlayerSwitch.charEnum.Unk4, false, "char_barry");
+
+                playerSwitch.SetPlayerDamage(0, true, true);
+
+                playerSwitch.MPLabel = "FR_HELP";
+
+                playerSwitch.Visible = true;
+
+                playerSwitch.MPHead = "char_barry";
+
+                bool aborted = false;
+
+                Game.FrameRender += (s, e) => playerSwitch.Draw2D(0.88f, 0.88f, 0.2f, 0.2f);
+
+                while (!aborted)
+                {
+                    GameFiber.Yield();
+                  
+                    Game.DisplaySubtitle($"Selected character: {playerSwitch.GetSwitchSelected()}");
+                    if (Game.IsKeyDown(Keys.Back)) aborted = true;
+                    else if (Game.IsKeyDownRightNow(Keys.NumPad8)) playerSwitch.PlayerSelected = 2;
+                    else if (Game.IsKeyDownRightNow(Keys.NumPad4)) playerSwitch.PlayerSelected = 0;
+                    else if (Game.IsKeyDownRightNow(Keys.NumPad6)) playerSwitch.PlayerSelected = 1;
+                    else if (Game.IsKeyDownRightNow(Keys.NumPad2)) playerSwitch.PlayerSelected = 3;
+                    else if (Game.IsKeyDown(Keys.NumPad8)) playerSwitch.PlayerSelected = 2;
+                    else if (Game.IsKeyDown(Keys.NumPad4)) playerSwitch.PlayerSelected = 0;
+                    else if (Game.IsKeyDown(Keys.NumPad6)) playerSwitch.PlayerSelected = 1;
+                    else if (Game.IsKeyDown(Keys.NumPad2)) playerSwitch.PlayerSelected = 3;
+                    
+                }
+                Game.FrameRender -= (s, e) => playerSwitch.Draw2D(0.88f, 0.88f, 0.2f, 0.2f);
+                playerSwitch.Release();
+            });
+        }
     }
 }

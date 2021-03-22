@@ -98,7 +98,7 @@ namespace ScaleformsResearch
             while (!Natives.x768FF8961BA904D6<bool>(ret)) Rage.GameFiber.Yield();
             return Natives.xD80A80346A45D761<bool>(ret);
         }
-        public bool CallFunctionInt(string name, params object[] args)
+        public int CallFunctionInt(string name, params object[] args)
         {
             Natives.xf6e48914c7a8694e(Handle, name);
             pushArgs(args);
@@ -106,7 +106,7 @@ namespace ScaleformsResearch
             while (!Natives.x768FF8961BA904D6<bool>(ret)) Rage.GameFiber.Yield();
             return Natives.x2DE7EFA66B906036<int>(ret);
         }
-        public bool CallFunctionString(string name, params object[] args)
+        public string CallFunctionString(string name, params object[] args)
         {
             Natives.xf6e48914c7a8694e(Handle, name);
             pushArgs(args);

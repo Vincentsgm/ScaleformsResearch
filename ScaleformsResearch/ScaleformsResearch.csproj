@@ -50,11 +50,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Movies\BountyBoard.cs" />
     <Compile Include="EntryPoint.cs" />
     <Compile Include="HudMovie.cs" />
     <Compile Include="Movie.cs" />
     <Compile Include="Movies\MorgueLaptop.cs" />
     <Compile Include="Movies\OpenWheelHealthIndicator.cs" />
+    <Compile Include="Movies\PlayerSwitch.cs" />
     <Compile Include="Movies\RankBar.cs" />
     <Compile Include="Movies\SecurityCam.cs" />
     <Compile Include="Movies\SecurityCamera.cs" />
