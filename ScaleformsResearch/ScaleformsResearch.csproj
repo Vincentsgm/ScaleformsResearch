@@ -32,11 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="RAGENativeUI">
-      <HintPath>D:\Rockstar Games\Grand Theft Auto V\RAGENativeUI.dll</HintPath>
-    </Reference>
     <Reference Include="RagePluginHookSDK">
-      <HintPath>D:\Rockstar Games\Grand Theft Auto V\SDK\RagePluginHookSDK.dll</HintPath>
+      <HintPath>..\..\..\Mods\_Libraries\RagePluginHookSDK.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -52,11 +49,13 @@
   <ItemGroup>
     <Compile Include="Movies\BountyBoard.cs" />
     <Compile Include="EntryPoint.cs" />
+    <Compile Include="HudColor.cs" />
     <Compile Include="HudMovie.cs" />
     <Compile Include="Movie.cs" />
     <Compile Include="Movies\MorgueLaptop.cs" />
     <Compile Include="Movies\OpenWheelHealthIndicator.cs" />
     <Compile Include="Movies\PlayerSwitch.cs" />
+    <Compile Include="Movies\PopupWarning.cs" />
     <Compile Include="Movies\RankBar.cs" />
     <Compile Include="Movies\SecurityCam.cs" />
     <Compile Include="Movies\SecurityCamera.cs" />
