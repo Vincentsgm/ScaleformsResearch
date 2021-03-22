@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Rage;
+using System;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace ScaleformsResearch.Movies
 {
@@ -21,5 +24,42 @@ namespace ScaleformsResearch.Movies
             Default,
             CameraLike,
         }
+
+        string[] t_locations = new string[] { "loc 1", "loc 2", "loc 3" };
+        string[] t_details = new string[] { "detail 1", "detail 2", "detail 3" };
+        int t_currentLocation = 0;
+        int t_currentDetail = 0;
+        protected override void OnTestStart()
+        {
+            base.OnTestStart();
+            Layout = SecurityCamLayout.CameraLike;
+            Location = t_locations[0];
+            Details = t_details[0];
+        }
+        protected override void OnTestTick()
+        {
+            base.OnTestTick();
+            if (Game.IsKeyDown(Keys.NumPad4))
+            {
+                t_currentLocation = MathHelper.Clamp(t_currentLocation + 1, 0, t_locations.Count() - 1);
+                Location = t_locations[t_currentLocation];
+            }
+            else if (Game.IsKeyDown(Keys.NumPad1))
+            {
+                t_currentLocation = MathHelper.Clamp(t_currentLocation - 1, 0, t_locations.Count() - 1);
+                Location = t_locations[t_currentLocation];
+            }
+            else if (Game.IsKeyDown(Keys.NumPad5))
+            {
+                t_currentDetail = MathHelper.Clamp(t_currentDetail + 1, 0, t_details.Count() - 1);
+                Details = t_details[t_currentDetail];
+            }
+            else if (Game.IsKeyDown(Keys.NumPad2))
+            {
+                t_currentDetail = MathHelper.Clamp(t_currentDetail - 1, 0, t_details.Count() - 1);
+                Details = t_details[t_currentDetail];
+            }
+        }
+        protected override string TestHelpMessage => $"~y~{Keys.NumPad4}~s~ - Next Location~n~~y~{Keys.NumPad1}~s~ - Previous Location~n~~y~{Keys.NumPad5}~s~ - Next Details~n~~y~{Keys.NumPad2}~s~ - Previous Details";
     }
 }

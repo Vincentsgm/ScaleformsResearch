@@ -15,6 +15,8 @@ namespace ScaleformsResearch
 
         public abstract string MovieName { get; }
 
+        protected virtual string TestHelpMessage => "";
+
         public bool Load()
         {
             if (IsLoaded) return true;
@@ -80,6 +82,35 @@ namespace ScaleformsResearch
         }
 
         protected virtual void BeforeDraw()
+        {
+
+        }
+
+        internal void TestStart()
+        {
+            OnTestStart();
+        }
+        internal void TestTick()
+        {
+            if (TestHelpMessage != "")
+            {
+                Rage.Game.DisplayHelp(TestHelpMessage);
+            }
+            OnTestTick();
+        }
+        internal void TestEnd()
+        {
+            OnTestEnd();
+        }
+        protected virtual void OnTestStart()
+        {
+
+        }
+        protected virtual void OnTestTick()
+        {
+
+        }
+        protected virtual void OnTestEnd()
         {
 
         }
