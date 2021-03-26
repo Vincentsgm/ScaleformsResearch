@@ -62,6 +62,7 @@
     <Compile Include="Movies\ClubhouseName.cs" />
     <Compile Include="Movies\Digiscanner.cs" />
     <Compile Include="Movies\Drilling.cs" />
+    <Compile Include="Movies\GTAVOnline.cs" />
     <Compile Include="Movies\MorgueLaptop.cs" />
     <Compile Include="Movies\OpenWheelHealthIndicator.cs" />
     <Compile Include="Movies\PlayerSwitch.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Movies\SecurityCamera.cs" />
     <Compile Include="Movies\Stage.cs" />
     <Compile Include="Test.cs" />
+    <Compile Include="Textures.cs" />
     <Compile Include="TimecycleModifier.cs" />
     <Compile Include="Util.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
