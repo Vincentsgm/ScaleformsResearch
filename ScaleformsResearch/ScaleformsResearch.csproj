@@ -49,6 +49,8 @@
   <ItemGroup>
     <Compile Include="AnimPostFX.cs" />
     <Compile Include="GameplayCamera.cs" />
+    <Compile Include="Movies\AppNumberpad.cs" />
+    <Compile Include="Movies\AppSecuroservHacking.cs" />
     <Compile Include="Movies\Binoculars.cs" />
     <Compile Include="Movies\BlimpText.cs" />
     <Compile Include="Movies\BountyBoard.cs" />
@@ -61,8 +63,14 @@
     <Compile Include="Movies\CameraShutter.cs" />
     <Compile Include="Movies\ClubhouseName.cs" />
     <Compile Include="Movies\Digiscanner.cs" />
+    <Compile Include="Movies\DigitalSafeDisplay.cs" />
     <Compile Include="Movies\Drilling.cs" />
+    <Compile Include="Movies\DroneCam.cs" />
+    <Compile Include="Movies\EditorShutter.cs" />
+    <Compile Include="Movies\EGCMonitor.cs" />
     <Compile Include="Movies\GTAVOnline.cs" />
+    <Compile Include="Movies\LandingPage.cs" />
+    <Compile Include="Movies\LoadingScreenNewGame.cs" />
     <Compile Include="Movies\MorgueLaptop.cs" />
     <Compile Include="Movies\OpenWheelHealthIndicator.cs" />
     <Compile Include="Movies\PlayerSwitch.cs" />
@@ -71,6 +79,8 @@
     <Compile Include="Movies\SecurityCam.cs" />
     <Compile Include="Movies\SecurityCamera.cs" />
     <Compile Include="Movies\Stage.cs" />
+    <Compile Include="Movies\SubmarineMissiles.cs" />
+    <Compile Include="Movies\TVFrame.cs" />
     <Compile Include="Test.cs" />
     <Compile Include="Textures.cs" />
     <Compile Include="TimecycleModifier.cs" />

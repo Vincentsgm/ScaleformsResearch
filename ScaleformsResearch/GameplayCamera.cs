@@ -38,6 +38,8 @@ namespace BadMusician.Common
         public static void Shake(CameraShake shake, float intensity) => Natives.SHAKE_GAMEPLAY_CAM(shake.ToString(), intensity);
 
         public static void StopShaking() => Natives.STOP_GAMEPLAY_CAM_SHAKING(0);
+
+        public static void RenderScriptCams() => Natives.RENDER_SCRIPT_CAMS(true, true, 10, true, true, true);
     }
 
     public enum CameraMode

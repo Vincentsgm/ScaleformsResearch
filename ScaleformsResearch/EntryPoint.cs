@@ -15,6 +15,7 @@ namespace ScaleformsResearch
     {
         public static void OnLoad()
         {
+            Game.FadeScreenIn(2000, false);
             while (true)
             {
                 GameFiber.Yield();

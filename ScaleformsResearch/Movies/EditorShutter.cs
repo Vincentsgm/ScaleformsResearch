@@ -1,16 +1,16 @@
-﻿using Rage;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Rage;
 using System.Windows.Forms;
 
 namespace ScaleformsResearch.Movies
 {
-    class CameraShutter : Movie
+    class EditorShutter : Movie
     {
-        public override string MovieName => "CAMERA_SHUTTER";
+        public override string MovieName => "EDITOR_SHUTTER";
 
         public void OpenShutter() => CallFunction("OPEN_SHUTTER");
 
@@ -20,7 +20,6 @@ namespace ScaleformsResearch.Movies
 
         protected override void OnTestTick()
         {
-            base.OnTestTick();
             if (Game.IsKeyDown(Keys.NumPad1))
             {
                 CloseShutter();

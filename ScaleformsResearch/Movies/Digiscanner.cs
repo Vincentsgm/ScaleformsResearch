@@ -35,6 +35,12 @@ namespace ScaleformsResearch.Movies
                 SetColor();
             }
         }
+
+        protected override void TestDraw()
+        {
+            Draw2D(0.5f, 0.5f, 0.4f, 1f);
+        }
+
         protected override string TestHelpMessage => $"~y~NumPad1/4~s~ - Edit Distance ({Distance})~n~~y~NumPad0~s~ - Set Color";
     }
 }
