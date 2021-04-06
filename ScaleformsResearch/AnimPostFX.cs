@@ -166,12 +166,12 @@ namespace ScaleformsResearch
         internal int Duration;
         internal bool Looped;
 
-        public AnimPostFX(AnimPostFXEffect fXEffect, int duration, bool looped)
+        public AnimPostFX(AnimPostFXEffect fXEffect, int duration, bool looped, bool play = true)
         {
             FXEffect = fXEffect;
             Duration = duration;
             Looped = looped;
-            Play();
+            if (play) Play();
         }
 
         public void Play()

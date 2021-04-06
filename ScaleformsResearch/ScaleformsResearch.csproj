@@ -72,6 +72,7 @@
     <Compile Include="Movies\LandingPage.cs" />
     <Compile Include="Movies\LoadingScreenNewGame.cs" />
     <Compile Include="Movies\MorgueLaptop.cs" />
+    <Compile Include="Movies\MPCelebration.cs" />
     <Compile Include="Movies\OpenWheelHealthIndicator.cs" />
     <Compile Include="Movies\PlayerSwitch.cs" />
     <Compile Include="Movies\PopupWarning.cs" />

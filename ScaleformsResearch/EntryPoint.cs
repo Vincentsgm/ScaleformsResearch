@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Rage;
+using Rage.Native;
 using static Rage.Native.NativeFunction;
 
 [assembly: Rage.Attributes.Plugin("ScaleformsResearch", Author = "BadMusician & Vincentsgm", EntryPoint = "ScaleformsResearch.EntryPoint.OnLoad", ExitPoint = "ScaleformsResearch.EntryPoint.OnUnload", PrefersSingleInstance = true)]
@@ -16,11 +17,13 @@ namespace ScaleformsResearch
         public static void OnLoad()
         {
             Game.FadeScreenIn(2000, false);
+
             while (true)
             {
                 GameFiber.Yield();
             }
         }
+
         public static void OnUnload(bool isTerminating)
         {
             Test.Stop();

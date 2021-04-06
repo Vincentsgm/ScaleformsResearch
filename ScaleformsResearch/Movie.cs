@@ -77,7 +77,7 @@ namespace ScaleformsResearch
             {
                 BeforeDraw();
                 scaleform2.BeforeDraw();
-                Natives.xCF537FDE4FBD4CE5(scaleform2.Handle, color.R, color.G, color.B, color.A);
+                Natives.xCF537FDE4FBD4CE5(Handle, scaleform2.Handle, color.R, color.G, color.B, color.A);
             }
         }
 
