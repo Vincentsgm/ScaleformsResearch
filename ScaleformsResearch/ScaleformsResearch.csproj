@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnimPostFX.cs" />
+    <Compile Include="Controls.cs" />
     <Compile Include="GameplayCamera.cs" />
     <Compile Include="Movies\AppNumberpad.cs" />
     <Compile Include="Movies\AppSecuroservHacking.cs" />

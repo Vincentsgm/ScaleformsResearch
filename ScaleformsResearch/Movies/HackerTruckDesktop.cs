@@ -45,7 +45,7 @@ namespace ScaleformsResearch.Movies
         public void ShowJobOverlay(int missionIndex, string title) => CallFunction("SHOW_JOB_OVERLAY", missionIndex, title);
 
         public void SetInputEvent(GameControl control) => CallFunction("SET_INPUT_EVENT", (int)control);
-        public void SetMouseInput(int x, int y) => CallFunction("SET_MOUSE_INPUT", x, y);
+        public void SetMouseInput(float x, float y) => CallFunction("SET_MOUSE_INPUT", x, y);
 
         public int GetCurrentSelection { get => CallFunctionInt("GET_CURRENT_SELECTION"); }
         public int GetCurrentRollover { get => CallFunctionInt("GET_CURRENT_ROLLOVER"); }
@@ -56,11 +56,11 @@ namespace ScaleformsResearch.Movies
         {
             ShowScreen(1);
             ClearJobs();
-            for (int i = 1; i < 6 * MaxJobs; i++)
+            for (int i = 1; i < MaxJobs; i++)
             {
                 AddJob(i, $"Job {i}", 20 * i, JobValueType.VALUE_TYPE_CASH, $"Tooltip {i}", true, 10000 * i);
                 //ShowJobOverlay(i, $"Job overlay {i}");
-                //UpdateMission((uint)i, true, 1);
+                UpdateMission((uint)i, true, 1);
                 UpdateCooldown((uint)i, 1);
             }
             ShowJobOverlay(1, "Job overlay 1");
@@ -77,6 +77,8 @@ namespace ScaleformsResearch.Movies
         {
             Game.DisableControlAction(0, GameControl.Phone, true);
             //Game.DisplayNotification($"Selection {GetCurrentSelection}; Rollover {GetCurrentRollover}");
+            var mouseInput = Controls.MousePosition;
+            SetMouseInput(mouseInput.X, mouseInput.Y);
             foreach (GameControl control in inputs)
             {
                 if (Game.IsControlJustPressed(0, control))
