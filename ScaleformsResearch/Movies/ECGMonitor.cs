@@ -9,9 +9,9 @@ using Rage;
 
 namespace ScaleformsResearch.Movies
 {
-    internal class EGCMonitor : Movie
+    internal class ECGMonitor : Movie
     {
-        public override string MovieName => "EGC_MONITOR";
+        public override string MovieName => "ECG_MONITOR";
 
         int heartRate;
         public int HeartRate
@@ -23,14 +23,14 @@ namespace ScaleformsResearch.Movies
                 CallFunction("SET_HEART_RATE", heartRate);
             }
         }
-        int heartSpeed;
-        public int HeartSpeed
+        int heartBeat;
+        public int HeartBeat
         {
-            get => heartSpeed;
+            get => heartBeat;
             set
             {
-                heartSpeed = Math.Max(0, value);
-                CallFunction("SET_HEART_SPEED", heartSpeed);
+                heartBeat = Math.Max(0, value);
+                CallFunction("SET_HEART_BEAT", heartBeat);
             }
         }
         int health;
@@ -40,17 +40,17 @@ namespace ScaleformsResearch.Movies
             set
             {
                 health = Math.Max(0, value);
-                CallFunction("SET_HEART_RATE", health);
+                CallFunction("SET_HEALTH", health);
             }
         }
-        int egcHealth;
-        public int EGCHealth
+        int ecgHealth;
+        public int ECGHealth
         {
-            get => egcHealth;
+            get => ecgHealth;
             set
             {
-                egcHealth = Math.Max(0, value);
-                CallFunction("SET_HEART_RATE", egcHealth);
+                ecgHealth = Math.Max(0, value);
+                CallFunction("SET_ECG_HEALTH", ecgHealth);
             }
         }
         Color monitorColor;
@@ -63,25 +63,34 @@ namespace ScaleformsResearch.Movies
                 CallFunction("SET_COLOUR", value.R, value.G, value.B);
             }
         }
+        bool widescreen;
+        public bool Widescreen { get => widescreen; set { widescreen = value; CallFunction("SET_WIDESCREEN", widescreen); } }
 
         protected override void OnTestStart()
         {
             HeartRate = 130;
-            HeartSpeed = 80;
+            HeartBeat = 80;
             Health = 100;
-            EGCHealth = 69;
+            ECGHealth = 69;
+        }
+
+        protected override void TestDraw()
+        {
+            //Draw2D(0.5f, 0.5f, 1f, 1f);
+            Draw();
         }
 
         protected override void OnTestTick()
         {
-            if (Game.IsKeyDown(Keys.NumPad7)) HeartRate+=5;
-            else if (Game.IsKeyDown(Keys.NumPad4)) HeartRate-=5;
-            else if (Game.IsKeyDown(Keys.NumPad8)) HeartSpeed+=5;
-            else if (Game.IsKeyDown(Keys.NumPad5)) HeartSpeed-=5;
-            else if (Game.IsKeyDown(Keys.NumPad9)) Health+=5;
-            else if (Game.IsKeyDown(Keys.NumPad6)) Health-=5;
-            else if (Game.IsKeyDown(Keys.NumPad1)) EGCHealth+=5;
-            else if (Game.IsKeyDown(Keys.NumPad2)) EGCHealth-=5;
+            if (Game.IsKeyDown(Keys.NumPad7)) HeartRate += 5;
+            else if (Game.IsKeyDown(Keys.NumPad4)) HeartRate -= 5;
+            else if (Game.IsKeyDown(Keys.NumPad8)) HeartBeat += 5;
+            else if (Game.IsKeyDown(Keys.NumPad5)) HeartBeat -= 5;
+            else if (Game.IsKeyDown(Keys.NumPad9)) Health += 5;
+            else if (Game.IsKeyDown(Keys.NumPad6)) Health -= 5;
+            else if (Game.IsKeyDown(Keys.NumPad1)) ECGHealth += 5;
+            else if (Game.IsKeyDown(Keys.NumPad2)) ECGHealth -= 5;
+            else if (Game.IsKeyDown(Keys.NumPad3)) Widescreen = !Widescreen;
 
             if (Health > 80) MonitorColor = Color.Green;
             else if (Health > 60) MonitorColor = Color.Orange;

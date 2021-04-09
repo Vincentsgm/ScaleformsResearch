@@ -69,7 +69,7 @@
     <Compile Include="Movies\Drilling.cs" />
     <Compile Include="Movies\DroneCam.cs" />
     <Compile Include="Movies\EditorShutter.cs" />
-    <Compile Include="Movies\EGCMonitor.cs" />
+    <Compile Include="Movies\ECGMonitor.cs" />
     <Compile Include="Movies\GTAVOnline.cs" />
     <Compile Include="Movies\HackerTruckDesktop.cs" />
     <Compile Include="Movies\HackingMessage.cs" />

@@ -69,7 +69,6 @@ namespace ScaleformsResearch.Movies
 
         protected override void TestDraw()
         {
-            
         }
 
 
