@@ -33,7 +33,7 @@ namespace ScaleformsResearch.Movies
             else
             if (Game.IsKeyDown(Keys.NumPad3))
             {
-                new Sound(-1).PlayFrontend("Camera_Shoot", "Camera_Shoot");
+                new Sound(-1).PlayFrontend("Camera_Shoot", "Phone_Soundset_Franklin");
                 CloseAndOpenShutter();
             }
         }

@@ -50,8 +50,12 @@
     <Compile Include="AnimPostFX.cs" />
     <Compile Include="Controls.cs" />
     <Compile Include="GameplayCamera.cs" />
+    <Compile Include="Movies\AppMissionStatsView.cs" />
     <Compile Include="Movies\AppNumberpad.cs" />
     <Compile Include="Movies\AppSecuroservHacking.cs" />
+    <Compile Include="Movies\ArcadeBusinessHub.cs" />
+    <Compile Include="Movies\ArcadeManagement.cs" />
+    <Compile Include="Movies\ArenaGunCam.cs" />
     <Compile Include="Movies\BankJobLogin.cs" />
     <Compile Include="Movies\Binoculars.cs" />
     <Compile Include="Movies\BlimpText.cs" />
@@ -61,11 +65,17 @@
     <Compile Include="HudMovie.cs" />
     <Compile Include="Movie.cs" />
     <Compile Include="Movies\BreakingNews.cs" />
+    <Compile Include="Movies\BusinessScreen.cs" />
     <Compile Include="Movies\CameraGallery.cs" />
     <Compile Include="Movies\CameraShutter.cs" />
     <Compile Include="Movies\ClubhouseName.cs" />
+    <Compile Include="Movies\CovertOps.cs" />
     <Compile Include="Movies\Digiscanner.cs" />
+    <Compile Include="Movies\DigitalCamera.cs" />
     <Compile Include="Movies\DigitalSafeDisplay.cs" />
+    <Compile Include="Movies\DisruptionLogistics.cs" />
+    <Compile Include="Movies\DJ.cs" />
+    <Compile Include="Movies\DLCArenaInt2.cs" />
     <Compile Include="Movies\Drilling.cs" />
     <Compile Include="Movies\DroneCam.cs" />
     <Compile Include="Movies\EditorShutter.cs" />
@@ -73,7 +83,9 @@
     <Compile Include="Movies\GTAVOnline.cs" />
     <Compile Include="Movies\HackerTruckDesktop.cs" />
     <Compile Include="Movies\HackingMessage.cs" />
+    <Compile Include="Movies\Heist2Celebration.cs" />
     <Compile Include="Movies\HeistPre.cs" />
+    <Compile Include="Movies\HeliCam.cs" />
     <Compile Include="Movies\HS4CasintElrubio.cs" />
     <Compile Include="Movies\HumMcs1Desktopcopy.cs" />
     <Compile Include="Movies\HumPacDesktopbank.cs" />
@@ -81,6 +93,7 @@
     <Compile Include="Movies\LesterHackPc.cs" />
     <Compile Include="Movies\LetterScraps.cs" />
     <Compile Include="Movies\LoadingScreenNewGame.cs" />
+    <Compile Include="Movies\LoadingscreenStartup.cs" />
     <Compile Include="Movies\MissionQuit.cs" />
     <Compile Include="Movies\MorgueLaptop.cs" />
     <Compile Include="Movies\MPCelebration.cs" />
@@ -108,6 +121,7 @@
     <Compile Include="Movies\StoryModeHeistBoard.cs" />
     <Compile Include="Movies\SubCam.cs" />
     <Compile Include="Movies\SubmarineMissiles.cs" />
+    <Compile Include="Movies\TurretCam.cs" />
     <Compile Include="Movies\TVFrame.cs" />
     <Compile Include="Test.cs" />
     <Compile Include="Textures.cs" />

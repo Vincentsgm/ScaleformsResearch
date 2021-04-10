@@ -66,12 +66,17 @@ namespace ScaleformsResearch.Movies
         bool widescreen;
         public bool Widescreen { get => widescreen; set { widescreen = value; CallFunction("SET_WIDESCREEN", widescreen); } }
 
+        Sound sound;
+
         protected override void OnTestStart()
         {
             HeartRate = 130;
-            HeartBeat = 80;
+            HeartBeat = 0;
             Health = 100;
             ECGHealth = 69;
+            sound = new Sound();
+            
+            
         }
 
         protected override void TestDraw()
@@ -80,8 +85,22 @@ namespace ScaleformsResearch.Movies
             Draw();
         }
 
+        bool flatSound = false;
         protected override void OnTestTick()
         {
+            if (HeartBeat > 0)
+            {                
+                if (sound.HasFinished || flatSound) sound.PlayFrontend("FBI_03_TORTURE_Heart_Monitor_Single", null);
+                flatSound = false;
+                sound.SetVariable("BPM", HeartBeat);
+            }
+            else
+            {
+                flatSound = true;
+                if (sound.HasFinished) sound.PlayFrontend("FBI_03_TORTURE_Heart_Monitor_Flatline", null);
+            }
+            
+
             if (Game.IsKeyDown(Keys.NumPad7)) HeartRate += 5;
             else if (Game.IsKeyDown(Keys.NumPad4)) HeartRate -= 5;
             else if (Game.IsKeyDown(Keys.NumPad8)) HeartBeat += 5;
@@ -96,6 +115,12 @@ namespace ScaleformsResearch.Movies
             else if (Health > 60) MonitorColor = Color.Orange;
             else if (Health > 40) MonitorColor = Color.Yellow;
             else MonitorColor = Color.Red;
+        }
+
+        protected override void OnTestEnd()
+        {
+            sound.Stop();
+            sound.ReleaseId();
         }
     }
 }

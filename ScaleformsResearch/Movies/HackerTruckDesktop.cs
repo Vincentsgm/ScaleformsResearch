@@ -8,11 +8,11 @@ using System.Windows.Forms;
 
 namespace ScaleformsResearch.Movies
 {
-    internal class HackerTruckDesktop : Movie
+    internal class HackerTruckDesktop : BusinessScreen
     {
         public override string MovieName => "HACKER_TRUCK_DESKTOP";
 
-        List<GameControl> inputs = new List<GameControl>
+        private List<GameControl> inputs = new List<GameControl>
         {
             GameControl.FrontendLeft,
             GameControl.FrontendRight,
@@ -21,8 +21,7 @@ namespace ScaleformsResearch.Movies
             GameControl.FrontendAccept,
             GameControl.FrontendCancel
         };
-
-        public void ShowScreen(int screenID) => CallFunction("SHOW_SCREEN", screenID);
+        public override List<GameControl> Inputs { get => inputs; set => throw new NotImplementedException(); }
 
         public const int MaxJobs = 9;
 
@@ -44,11 +43,6 @@ namespace ScaleformsResearch.Movies
         public void AddJob(int index, string title, int value, JobValueType valueType, string tooltip, bool isAvailable, int salePrice) => CallFunction("ADD_JOB", index, title, value, (int)valueType, tooltip, isAvailable, salePrice);
         public void ShowJobOverlay(int missionIndex, string title) => CallFunction("SHOW_JOB_OVERLAY", missionIndex, title);
 
-        public void SetInputEvent(GameControl control) => CallFunction("SET_INPUT_EVENT", (int)control);
-        public void SetMouseInput(float x, float y) => CallFunction("SET_MOUSE_INPUT", x, y);
-
-        public int GetCurrentSelection { get => CallFunctionInt("GET_CURRENT_SELECTION"); }
-        public int GetCurrentRollover { get => CallFunctionInt("GET_CURRENT_ROLLOVER"); }
 
         public void ClearJobs() => CallFunction("CLEAR_JOBS");
 
@@ -74,11 +68,11 @@ namespace ScaleformsResearch.Movies
 
         protected override void OnTestTick()
         {
-            Game.DisableControlAction(0, GameControl.Phone, true);
+            DisableHUD();
             //Game.DisplayNotification($"Selection {GetCurrentSelection}; Rollover {GetCurrentRollover}");
             var mouseInput = Controls.MousePosition;
             SetMouseInput(mouseInput.X, mouseInput.Y);
-            foreach (GameControl control in inputs)
+            foreach (GameControl control in Inputs)
             {
                 if (Game.IsControlJustPressed(0, control))
                 {
