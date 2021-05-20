@@ -14,7 +14,7 @@ namespace ScaleformsResearch.Movies
         public void SetBounty(string bountyName, int bountyValue, string bountyCharacterTexture, string bountyCharacterDictionary)
         {
             Natives.xDFA2EF8E04127DD5(bountyCharacterDictionary, true); //REQUEST_STREAMED_TEXTURE_DICT
-            CallFunction("SET_BOUNTY", bountyName, bountyValue, bountyCharacterTexture, bountyCharacterDictionary); ;
+            CallFunction("SET_BOUNTY", bountyName, bountyValue, bountyCharacterTexture, bountyCharacterDictionary);
         }
 
         protected override void OnTestStart()
