@@ -18,8 +18,9 @@ namespace ScaleformsResearch.Movies
 
         protected override void OnTestStart()
         {
-            ShowRampage();
-            //ShowRampageIntro(5000, "", "Rampage Starting!");
+            //ShowRampage();
+            ShowRampageIntro(20000, "Rampage", "Rampage Starting!");
+            Rage.Game.DisplaySubtitle(Handle.ToString());
         }
     }
 }

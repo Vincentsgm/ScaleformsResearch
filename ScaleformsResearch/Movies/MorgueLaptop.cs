@@ -62,7 +62,7 @@ namespace ScaleformsResearch.Movies
 
         protected override void OnTestEnd()
         {
-            if (sound != null) return;
+            if (sound == null) return;
             sound.Stop();
             sound.ReleaseId();
             sound = null;

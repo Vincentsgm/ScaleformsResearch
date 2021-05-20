@@ -10,7 +10,7 @@ using BadMusician.Common;
 
 namespace ScaleformsResearch.Movies
 {
-    internal class SubmarineMissiles : Movie
+    internal class SubmarineMissiles : TurretCam
     {
         public override string MovieName => "SUBMARINE_MISSILES";
 
@@ -66,6 +66,7 @@ namespace ScaleformsResearch.Movies
 
         protected override void OnTestTick()
         {
+            base.OnTestTick();
             if (WarningVisible) { TimecycleModifier.ClearTimecycle(); }
             else TimecycleModifier.SetTimecycle("CAMERA_secuirity");
             
