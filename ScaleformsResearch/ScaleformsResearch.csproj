@@ -33,7 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="RagePluginHookSDK">
-      <HintPath>..\..\..\Mods\_Libraries\RagePluginHookSDK.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Rockstar Games\Grand Theft Auto V\SDK\RagePluginHookSDK.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -80,6 +80,7 @@
     <Compile Include="Movies\DroneCam.cs" />
     <Compile Include="Movies\EditorShutter.cs" />
     <Compile Include="Movies\ECGMonitor.cs" />
+    <Compile Include="Movies\FreemodeMMCard.cs" />
     <Compile Include="Movies\GTAVOnline.cs" />
     <Compile Include="Movies\HackerTruckDesktop.cs" />
     <Compile Include="Movies\HackingMessage.cs" />
@@ -147,10 +148,10 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>SET GTA="D:\Rockstar Games\Grand Theft Auto V"
+    <PostBuildEvent>SET GTA="C:\Program Files\Rockstar Games\Grand Theft Auto V"
 if exist %25GTA%25 (
-  copy /Y "$(TargetDir)$(ProjectName).dll" "D:\Rockstar Games\Grand Theft Auto V\Plugins\$(ProjectName).dll"
-  copy /Y "$(TargetDir)$(ProjectName).pdb" "D:\Rockstar Games\Grand Theft Auto V\Plugins\$(ProjectName).pdb"
+  copy /Y "$(TargetDir)$(ProjectName).dll" "C:\Program Files\Rockstar Games\Grand Theft Auto V\Plugins\$(ProjectName).dll"
+  copy /Y "$(TargetDir)$(ProjectName).pdb" "C:\Program Files\Rockstar Games\Grand Theft Auto V\Plugins\$(ProjectName).pdb"
 )
 
 SET GTA="S:\Steam\steamapps\common\Grand Theft Auto V"
