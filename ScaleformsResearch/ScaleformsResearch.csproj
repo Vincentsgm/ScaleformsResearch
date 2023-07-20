@@ -137,6 +137,8 @@
     <Compile Include="Movies\StoryModeHeistBoard.cs" />
     <Compile Include="Movies\SubCam.cs" />
     <Compile Include="Movies\SubmarineMissiles.cs" />
+    <Compile Include="Movies\TextField.cs" />
+    <Compile Include="Movies\TickerTape.cs" />
     <Compile Include="Movies\TurretCam.cs" />
     <Compile Include="Movies\TVFrame.cs" />
     <Compile Include="Test.cs" />
