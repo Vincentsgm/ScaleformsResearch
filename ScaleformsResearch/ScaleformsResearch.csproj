@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="RAGENativeUI">
+      <HintPath>..\..\..\..\..\..\..\Program Files\Rockstar Games\Grand Theft Auto V\RAGENativeUI.dll</HintPath>
+    </Reference>
     <Reference Include="RagePluginHookSDK">
       <HintPath>..\..\..\..\..\..\..\Program Files\Rockstar Games\Grand Theft Auto V\SDK\RagePluginHookSDK.dll</HintPath>
     </Reference>
