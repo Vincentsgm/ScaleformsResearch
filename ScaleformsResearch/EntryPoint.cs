@@ -16,6 +16,7 @@ namespace ScaleformsResearch
     {
         public static void OnLoad()
         {
+            AppDomain.CurrentDomain.DomainUnload += (s, e) => OnUnload(true);
             Game.FadeScreenIn(2000, false);
             
 
@@ -23,6 +24,11 @@ namespace ScaleformsResearch
             {
                 GameFiber.Yield();
             }
+        }
+
+        private static void CurrentDomain_DomainUnload(object sender, EventArgs e)
+        {
+            Test.Stop();
         }
 
         public static void OnUnload(bool isTerminating)

@@ -1,4 +1,5 @@
-﻿using static Rage.Native.NativeFunction;
+﻿using Rage;
+using static Rage.Native.NativeFunction;
 using Color = System.Drawing.Color;
 
 namespace ScaleformsResearch
@@ -7,9 +8,9 @@ namespace ScaleformsResearch
     {
         public int Handle { get; private set; } = 0;
         public Color Color { get; set; } = Color.White;
-        public bool IsLoaded { get { return !IsReleased && Handle != 0 && Natives.x85F01B8D5B90570E<bool>(Handle); } }
+        public bool IsLoaded { get { return !IsReleased && Handle != 0 && Natives.HAS_SCALEFORM_MOVIE_LOADED<bool>(Handle); } }
 
-        public bool FitsRenderTarget { set => Natives.xE6A9F00D4240B519(Handle, value); }
+        public bool FitsRenderTarget { set => Natives.SET_SCALEFORM_MOVIE_TO_USE_SUPER_LARGE_RT(Handle, value); }
 
         public bool IsReleased { get; private set; }
 
@@ -21,21 +22,21 @@ namespace ScaleformsResearch
         {
             if (IsLoaded) return true;
             IsReleased = false;
-            Handle = Natives.x11FE353CF9733E6F<int>(MovieName);
+            Handle = Natives.REQUEST_SCALEFORM_MOVIE<int>(MovieName);
             return Handle != 0;
         }
 
         public bool LoadAndWait()
         {
             bool x = Load();
-            while (!IsLoaded) Rage.GameFiber.Sleep(1);
+            while (!IsLoaded) GameFiber.Sleep(1);
             return x;
         }
 
         public void Release()
         {
             int h = Handle;
-            Natives.x1D132D614DD86811(ref h);
+            Natives.SET_SCALEFORM_MOVIE_AS_NO_LONGER_NEEDED(ref h);
             IsReleased = true;
         }
 
@@ -49,25 +50,25 @@ namespace ScaleformsResearch
         {
             if (!IsLoaded) return;
             BeforeDraw();
-            Natives.x0DF606929C105BE1(Handle, Color.R, Color.G, Color.B, Color.A);
+            Natives.DRAW_SCALEFORM_MOVIE_FULLSCREEN(Handle, Color.R, Color.G, Color.B, Color.A);
         }
 
         public void Draw2D(float x, float y, float w, float h)
         {
             if (!IsLoaded) return;
             BeforeDraw();
-            Natives.x54972ADAF0294A93(Handle, x, y, w, h, Color.R, Color.G, Color.B, Color.A);
+            Natives.DRAW_SCALEFORM_MOVIE(Handle, x, y, w, h, Color.R, Color.G, Color.B, Color.A);
         }
 
-        public void Draw3D(Rage.Vector3 position, Rage.Rotator rotation, Rage.Vector3 scale, bool solid = true)
+        public void Draw3D(Vector3 position, Rotator rotation, Vector3 scale, bool solid = true)
         {
             if (IsLoaded)
             {
                 BeforeDraw();
                 if (solid)
-                    Natives.x1ce592fdc749d6f5(Handle, position.X, position.Y, position.Z, rotation.Pitch, rotation.Roll, rotation.Yaw, 2, 2, 1, scale.X, scale.Y, scale.Z, 2);
+                    Natives.DRAW_SCALEFORM_MOVIE_3D_SOLID(Handle, position.X, position.Y, position.Z, rotation.Pitch, rotation.Roll, rotation.Yaw, 2, 2, 1, scale.X, scale.Y, scale.Z, 2);
                 else
-                    Natives.x87D51D72255D4E78(Handle, position.X, position.Y, position.Z, rotation.Pitch, rotation.Roll, rotation.Yaw, 2, 2, 1, scale.X, scale.Y, scale.Z, 2);
+                    Natives.DRAW_SCALEFORM_MOVIE_3D(Handle, position.X, position.Y, position.Z, rotation.Pitch, rotation.Roll, rotation.Yaw, 2, 2, 1, scale.X, scale.Y, scale.Z, 2);
             }
         }
 
@@ -77,7 +78,7 @@ namespace ScaleformsResearch
             {
                 BeforeDraw();
                 scaleform2.BeforeDraw();
-                Natives.xCF537FDE4FBD4CE5(Handle, scaleform2.Handle, color.R, color.G, color.B, color.A);
+                Natives.DRAW_SCALEFORM_MOVIE_FULLSCREEN_MASKED(Handle, scaleform2.Handle, color.R, color.G, color.B, color.A);
             }
         }
 
@@ -94,7 +95,7 @@ namespace ScaleformsResearch
         {
             if (TestHelpMessage != "")
             {
-                Rage.Game.DisplayHelp(TestHelpMessage);
+                Game.DisplayHelp(TestHelpMessage);
             }
             TestDraw();
             OnTestTick();
@@ -122,55 +123,55 @@ namespace ScaleformsResearch
 
         public void CallFunction(string name, params object[] args)
         {
-            Natives.xf6e48914c7a8694e(Handle, name);
+            Natives.BEGIN_SCALEFORM_MOVIE_METHOD(Handle, name);
             pushArgs(args);
-            Natives.xc6796a8ffa375e53();
+            Natives.END_SCALEFORM_MOVIE_METHOD();
         }
         public bool CallFunctionBool(string name, params object[] args)
         {
-            Natives.xf6e48914c7a8694e(Handle, name);
+            Natives.BEGIN_SCALEFORM_MOVIE_METHOD(Handle, name);
             pushArgs(args);
-            int ret = Natives.xC50AA39A577AF886<int>();
-            while (!Natives.x768FF8961BA904D6<bool>(ret)) Rage.GameFiber.Yield();
-            return Natives.xD80A80346A45D761<bool>(ret);
+            int ret = Natives.END_SCALEFORM_MOVIE_METHOD_RETURN_VALUE<int>();
+            while (!Natives.IS_SCALEFORM_MOVIE_METHOD_RETURN_VALUE_READY<bool>(ret)) GameFiber.Yield();
+            return Natives.GET_SCALEFORM_MOVIE_METHOD_RETURN_VALUE_BOOL<bool>(ret);
         }
         public int CallFunctionInt(string name, params object[] args)
         {
-            Natives.xf6e48914c7a8694e(Handle, name);
+            Natives.BEGIN_SCALEFORM_MOVIE_METHOD(Handle, name);
             pushArgs(args);
-            int ret = Natives.xC50AA39A577AF886<int>();
-            while (!Natives.x768FF8961BA904D6<bool>(ret)) Rage.GameFiber.Yield();
-            return Natives.x2DE7EFA66B906036<int>(ret);
+            int ret = Natives.END_SCALEFORM_MOVIE_METHOD_RETURN_VALUE<int>();
+            while (!Natives.IS_SCALEFORM_MOVIE_METHOD_RETURN_VALUE_READY<bool>(ret)) GameFiber.Yield();
+            return Natives.GET_SCALEFORM_MOVIE_METHOD_RETURN_VALUE_INT<int>(ret);
         }
         public string CallFunctionString(string name, params object[] args)
         {
-            Natives.xf6e48914c7a8694e(Handle, name);
+            Natives.BEGIN_SCALEFORM_MOVIE_METHOD(Handle, name);
             pushArgs(args);
-            int ret = Natives.xC50AA39A577AF886<int>();
-            while (!Natives.x768FF8961BA904D6<bool>(ret)) Rage.GameFiber.Yield();
-            return Natives.xE1E258829A885245<string>(ret);
+            int ret = Natives.END_SCALEFORM_MOVIE_METHOD_RETURN_VALUE<int>();
+            while (!Natives.IS_SCALEFORM_MOVIE_METHOD_RETURN_VALUE_READY<bool>(ret)) GameFiber.Yield();
+            return Natives.GET_SCALEFORM_MOVIE_METHOD_RETURN_VALUE_STRING<string>(ret);
         }
 
         protected void pushArgs(object[] args)
         {
             foreach (object x in args)
             {
-                if (x.GetType() == typeof(int)) Natives.xc3d0841a0cc546a6((int)x);
-                else if (x.GetType() == typeof(float)) Natives.xd69736aae04db51a((float)x);
-                else if (x.GetType() == typeof(double)) Natives.xd69736aae04db51a((float)(double)x);
-                else if (x.GetType() == typeof(bool)) Natives.xc58424ba936eb458((bool)x);
-                else if (x.GetType() == typeof(TXD)) Natives.xba7148484bd90365(((TXD)x).Texture);
+                if (x.GetType() == typeof(int)) Natives.SCALEFORM_MOVIE_METHOD_ADD_PARAM_INT((int)x);
+                else if (x.GetType() == typeof(float)) Natives.SCALEFORM_MOVIE_METHOD_ADD_PARAM_FLOAT((float)x);
+                else if (x.GetType() == typeof(double)) Natives.SCALEFORM_MOVIE_METHOD_ADD_PARAM_FLOAT((float)(double)x);
+                else if (x.GetType() == typeof(bool)) Natives.SCALEFORM_MOVIE_METHOD_ADD_PARAM_BOOL((bool)x);
+                else if (x.GetType() == typeof(TXD)) Natives.SCALEFORM_MOVIE_METHOD_ADD_PARAM_TEXTURE_NAME_STRING(((TXD)x).Texture);
                 else if (x.GetType() == typeof(string))
                 {
-                    Natives.x80338406f3475e55("STRING");
-                    Natives.x6c188be134e074aa((string)x);
-                    Natives.x362e2d3fe93a9959();
+                    Natives.BEGIN_TEXT_COMMAND_SCALEFORM_STRING("STRING");
+                    Natives.ADD_TEXT_COMPONENT_SUBSTRING_PLAYER_NAME((string)x);
+                    Natives.END_TEXT_COMMAND_SCALEFORM_STRING();
                 }
                 else if (x.GetType() == typeof(char))
                 {
-                    Natives.x80338406f3475e55("STRING");
-                    Natives.x6c188be134e074aa(((char)x).ToString());
-                    Natives.x362e2d3fe93a9959();
+                    Natives.BEGIN_TEXT_COMMAND_SCALEFORM_STRING("STRING");
+                    Natives.ADD_TEXT_COMPONENT_SUBSTRING_PLAYER_NAME(((char)x).ToString());
+                    Natives.END_TEXT_COMMAND_SCALEFORM_STRING();
                 }
             }
         }
