@@ -77,7 +77,7 @@ namespace ScaleformsResearch.Movies
 
             MPHead = "char_barry";
 
-            Game.FrameRender += Game_FrameRender; ;
+            Game.FrameRender += Game_FrameRender;
         }
 
         private void Game_FrameRender(object sender, GraphicsEventArgs e)
@@ -88,6 +88,10 @@ namespace ScaleformsResearch.Movies
         protected override void OnTestTick()
         {
             Game.DisplaySubtitle($"Selected character: {PlayerSelected}");
+            /*if (Game.IsKeyDown(Keys.NumPad8)) PlayerSelected = 2;
+            else if (Game.IsKeyDown(Keys.NumPad4)) PlayerSelected = 0;
+            else if (Game.IsKeyDown(Keys.NumPad6)) PlayerSelected = 1;
+            else if (Game.IsKeyDown(Keys.NumPad2)) PlayerSelected = 3;*/
             if (Game.IsKeyDown(Keys.NumPad8)) PlayerSelected = 2;
             else if (Game.IsKeyDown(Keys.NumPad4)) PlayerSelected = 0;
             else if (Game.IsKeyDown(Keys.NumPad6)) PlayerSelected = 1;
