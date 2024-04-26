@@ -144,6 +144,7 @@
     <Compile Include="Movies\TickerTape.cs" />
     <Compile Include="Movies\TurretCam.cs" />
     <Compile Include="Movies\TVFrame.cs" />
+    <Compile Include="Movies\WindMeter.cs" />
     <Compile Include="Test.cs" />
     <Compile Include="Textures.cs" />
     <Compile Include="TimecycleModifier.cs" />
